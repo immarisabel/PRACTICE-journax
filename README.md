@@ -1,3 +1,81 @@
-# Personal Journal
- Java Project 02
-## Start date: JAN 3, 2021
+# My Ambitious Journal Project: JOURNAX
+![journaxLogo](/images/logotext.png)
+
+*My universal personal experience journal*
+
+Beautiful and Inspiring!
+
+__GOAL: To learn the ins and outs of database-supported software and have the digital journal of my dreams.__
+
+### Concept:
+I have been an avid journal writer since I can remember. A few years ago I bought a subscription to Journey.App and I love it. However, I have always dreamed of having all of my journals (my dream journal is on a different service as my stories and so on) on my own portable and offline app. But most offline journal apps are just u-g-l-y. I could use a notepad but that eventually gets boring.
+
+I want to collect all my memories in a single USB drive (or 2 for BU) instead of spread them around in different services.
+
+__WHAT I WISH TO HAVE__
+
+1. simplified journal writing on the same window
+2. markup language use which I can also edit to my own colors (like CSS: if bold, then pink IE)
+3. Multiple journals with their own separate tags and categories 
+	- a. Dream Journal with categories of dreams
+	- b. Personal Journal with maybe mood categories
+	- c. Daily Log
+	- d. Food journal with also categories maybe for scoring
+	- e. language learning journal
+	- f. general notes and ideas with categories
+4. Trackers
+	- a. Customised trackers to register any value like booleans, integers, and text. I kept this in a google sheet. But want to have it also included in the journal
+		- Movies watched (text)
+		- Weight tracker (Double)
+		- Habits (Booleans)
+	- b. charts according to what I am tracking
+5. Reminders
+	- a. birthdays
+	- b. last time I... (IE: haircut)
+	- c. big events quick note
+
+###	LONG TERM GOALS:
+- learning SQL through and through
+- learning to compile with SQLite (as I require multiple tables)
+- learning to manipulate tables and data via input on Java
+- learning JavaFX (via the Udemy course which has a 20-hour [out of 80] section :scream: )
+- learning to implement all of this and run my own custom made journal via a USB
+- learning API integration for things like the weather or spellchecker based on the computer's own options
+
+---
+
+## Week 1: JAN 4 - 10, 2021
+__TO DO__
+
+- [x] Complete idea/concept 
+- [x] Initial code flow 
+- [ ] Create project documentation for GitHub
+- [ ] Create the project's own homepage for visual progress and public accountability
+
+## Week 2:
+__TO DO__
+
+- [ ] section 5 from the Java course
+- [ ] Start on SQL course first 2 sections
+- [ ] Start building the database and what I want to be included by default
+
+## Week 3:
+__TO DO__
+
+- [ ] sections 6 & 7 from the Java course
+- [ ] Initiate first login screen with lock and unlock function
+- [ ] Store and update username and password in the database
+
+## Week 4:
+__TO DO__
+
+- [ ] SQL course 2 sections
+- [ ] Create main journal input fields
+- [ ] Access journal entries to manipulate data as wished
+
+## Week 5:
+__TO DO__
+
+- [ ] SQL course 2 sections
+- [ ] Create multiple journals (and their databases) from inside the application
+```
