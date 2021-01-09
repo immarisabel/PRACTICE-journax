@@ -49,8 +49,6 @@ __TO DO__
 
 - [x] Complete idea/concept 
 - [x] Initial code flow 
-- [ ] Create project documentation for GitHub
-- [ ] Create the project's own homepage for visual progress and public accountability
 
 ## Week 2:
 __TO DO__
