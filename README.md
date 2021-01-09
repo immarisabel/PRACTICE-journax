@@ -1,5 +1,5 @@
 # My Ambitious Journal Project: JOURNAX
-![journaxLogo](/images/logotext.png)
+![journaxLogo](https://github.com/immarisabel/Personal-Journal/blob/main/logotext.png)
 
 *My universal personal experience journal*
 
