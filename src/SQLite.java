@@ -8,6 +8,7 @@ public class SQLite extends Entry{
     private  String newTitle;
     private  String newDate =today();
     private  String newEntry;
+    private int entryID;
 
     public SQLite(String newTitle, String newDate, String newEntry) {
         super(newTitle, newDate, newEntry);
@@ -30,6 +31,9 @@ public class SQLite extends Entry{
 
     }
 
+    private int EntryID() {  return 0;  }
+
+
     public void addEntry(String newTitle, String newDate, String newEntry) throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         this.newTitle = newTitle;
@@ -44,9 +48,9 @@ public class SQLite extends Entry{
             statement.setQueryTimeout(30);
 
             PreparedStatement prep = connection.prepareStatement("INSERT INTO journal (entry_content, entry_date, entry_title) VALUES (?,?,?)"); /* TIME FORMAT! */
-            prep.setString(3, newTitle);
             prep.setString(1, newEntry);
             prep.setString(2, newDate);
+            prep.setString(3, newTitle);
             prep.execute();
 
             System.out.println(">>>>>>>> ENTRY ADDED");
@@ -69,6 +73,10 @@ public class SQLite extends Entry{
             }
         }
     }
+
+   /*READ*/
+
+
     public void getEntries() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         String newTitle = EntryTitle("TEST title");
@@ -89,10 +97,9 @@ public class SQLite extends Entry{
             {
                 // read the result set
                 System.out.println();
-                System.out.println("date: " + rs.getString("entry_date"));
-                System.out.println("title: " + rs.getString("entry_title") + "\n");
+                System.out.println("Entry number: " + rs.getInt("entry_id") + "\ndate: " + rs.getString("entry_date") +"\n♥ " + rs.getString("entry_title").toUpperCase() + "\n");
                 System.out.println(rs.getString("entry_content") + "\n");
-                System.out.println("~ ♥ ~");
+                System.out.println(".....................................");
             }
 
 
@@ -112,5 +119,48 @@ public class SQLite extends Entry{
         }
 
     }
+
+    /* DELETE */
+
+
+
+    public void deleteEntry(int entryID) throws ClassNotFoundException {
+        Class.forName("org.sqlite.JDBC");
+        Connection connection = null;
+        this.entryID = entryID;
+        try {
+            // create a database connection
+            connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+            PreparedStatement prep = connection.prepareStatement("DELETE FROM journal WHERE entry_id = ?");
+            prep.setInt(1, entryID);
+            prep.execute();
+
+
+            System.out.println(">>>>>>>> ENTRY DELETED");
+
+
+
+
+        } catch (
+                SQLException e) {
+            // if the error message is "out of memory",
+            // it probably means no database file is found
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+
+
+    }
+}
+
+
 }
 
