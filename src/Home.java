@@ -1,31 +1,29 @@
-import javax.swing.*;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Home {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
 
+        SQLite journal = new SQLite("","","");
 
+        journal.addEntry("Title Two",today(),"blah blah blah");
 
+        System.out.println("WELCOME TO THE JOURNAL!\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n> > > ALL ENTRIES:");
 
-
-
-
-
-
-
-
-
-
-        /*DO NOT TOUCH*/
-
-        Date journalDate = new Date();
-        System.out.println("\n" + journalDate.today());
-
-        System.out.println(">>>>>SAVED<<<<<");
+        journal.getEntries();
 
     }
 
 
+    /*date GENERATOR*/
+
+    public static String today() {
+
+        LocalDateTime dateTime = LocalDateTime.now();
+        String todayTime = dateTime.format(DateTimeFormatter.ofPattern("d MMM uuuu @ HH:mm"));
+        return todayTime;
+
     }
+}
