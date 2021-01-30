@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Journal {
 
     private static Scanner scanner = new Scanner(System.in);
-    public static void Journal() throws ClassNotFoundException {
+    public Journal() throws ClassNotFoundException {
         SQLite journal = new SQLite("","","");
         System.out.println("WELCOME TO JOURNAX! The text edition \nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
@@ -57,8 +57,7 @@ public class Journal {
     public static String today() {
 
         LocalDateTime dateTime = LocalDateTime.now();
-        String todayTime = dateTime.format(DateTimeFormatter.ofPattern("d MMM uuuu @ HH:mm"));
-        return todayTime;
+        return dateTime.format(DateTimeFormatter.ofPattern("d MMM uuuu @ HH:mm"));
 
     }
 
