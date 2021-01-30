@@ -32,6 +32,7 @@ public class Home {
                     journal.addEntry("Title Two",today(),"blah blah blah");
                     break;
                 case 3:
+                    journal.updateEntry(2,"title 2 updated","text new here, date should still be 29 Jan.");
                     break;
                 case 4:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
