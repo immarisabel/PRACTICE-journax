@@ -1,4 +1,7 @@
+package nl.marisabel.journal;
+
 public class Entry {
+
 
     private String newTitle;
     private String newDate;
@@ -27,7 +30,7 @@ public class Entry {
         return entryID;
     }
 
-    public static Entry createEntry(String newTitle, String newDate, String newEntry){
+    public static Entry createEntry(String newTitle, String newDate, String newEntry) {
         return new Entry(newTitle, newDate, newEntry);
     }
 }

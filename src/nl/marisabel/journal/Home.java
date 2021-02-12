@@ -1,3 +1,4 @@
+package nl.marisabel.journal;
 
 
 public class Home {
@@ -10,4 +11,3 @@ public class Home {
 
 
 }
- 
