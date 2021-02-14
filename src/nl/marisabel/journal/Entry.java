@@ -3,19 +3,13 @@ package nl.marisabel.journal;
 public class Entry {
 
 
-    private String newTitle;
     private String newDate;
     private String newEntry;
     private int entryID;
 
-    public Entry(String newTitle, String newDate, String newEntry) {
-        this.newTitle = newTitle;
+    public Entry( String newDate, String newEntry) {
         this.newDate = newDate;
         this.newEntry = newEntry;
-    }
-
-    public String getNewTitle() {
-        return newTitle;
     }
 
     public String getNewDate() {
@@ -30,7 +24,7 @@ public class Entry {
         return entryID;
     }
 
-    public static Entry createEntry(String newTitle, String newDate, String newEntry) {
-        return new Entry(newTitle, newDate, newEntry);
+    public static Entry createEntry(String newDate, String newEntry) {
+        return new Entry(newDate, newEntry);
     }
 }

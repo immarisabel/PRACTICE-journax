@@ -8,9 +8,11 @@ public class Journal {
 
     private static Scanner scanner = new Scanner(System.in);
     public Journal() throws ClassNotFoundException {
-        SQLite journal = new SQLite("","","");
-        System.out.println("WELCOME TO JOURNAX! The text edition \nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
+        SQLite journal = new SQLite("","");
+        System.out.println("WELCOME TO JOURNAX!\nThe text edition\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
+        int entryId;
+        String entry ;
         boolean quit = false;
         while(!quit) {
             int action = scanner.nextInt();
@@ -26,20 +28,30 @@ public class Journal {
                     break;
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
-                    journal.addEntry("Title Two",today(),"blah blah blah");
+                    System.out.println("Dear diary...");
+                    entry = scanner.nextLine();
+                    journal.addEntry(today(),entry);
                     break;
                 case 3:
-                    journal.updateEntry(2,"title 2 updated","text new here, date should still be 29 Jan.");
+
                     break;
                 case 4:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
-                    journal.deleteEntry(1);
+                    System.out.println("Type the entry number you wish to delete...");
+                    entryId = scanner.nextInt();
+                    journal.deleteEntry(entryId);
                     break;
                 case 5:
                     //TODO search
                     break;
                 case 6:
                     printActions();
+                    break;
+                case 7:
+                    journal.createJournal();
+                    break;
+                case 8:
+                    journal.delJournal();
                     break;
             }
 
@@ -72,7 +84,9 @@ public class Journal {
                 "3  - to update an existing entry\n" +
                 "4  - to remove an existing entry\n" +
                 "5  - search for tags\n" +
-                "6  - to see options again");
+                "6  - to see options again\n" +
+                "7  - create journal \n" +
+                "8  - delete");
         System.out.println("\nWhat do you wish to do?");
     }
 }
