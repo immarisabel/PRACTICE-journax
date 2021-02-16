@@ -20,9 +20,9 @@ import java.sql.SQLException;
 
 import org.ibex.nestedvm.Runtime;
 
-// FEATURE: strdup is wasteful, SQLite interface will take unterminated char*
+// FEATURE: strdup is wasteful, ReadEntry interface will take unterminated char*
 
-/** Communicates with the Java version of SQLite provided by NestedVM. */
+/** Communicates with the Java version of ReadEntry provided by NestedVM. */
 final class NestedDB extends DB implements Runtime.CallJavaCB
 {
     /** database pointer */
@@ -56,7 +56,7 @@ final class NestedDB extends DB implements Runtime.CallJavaCB
 
         // start the nestedvm runtime
         try {
-            rt = (Runtime) Class.forName("org.sqlite.SQLite").newInstance();
+            rt = (Runtime) Class.forName("org.sqlite.ReadEntry").newInstance();
             rt.start();
         }
         catch (Exception e) {

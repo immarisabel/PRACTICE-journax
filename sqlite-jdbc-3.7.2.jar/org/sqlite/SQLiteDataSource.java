@@ -38,7 +38,7 @@ import org.sqlite.SQLiteConfig.SynchronousMode;
 import org.sqlite.SQLiteConfig.TempStore;
 
 /**
- * Provides {@link DataSource} API for configuring SQLite database connection
+ * Provides {@link DataSource} API for configuring ReadEntry database connection
  * 
  * @author leo
  * 

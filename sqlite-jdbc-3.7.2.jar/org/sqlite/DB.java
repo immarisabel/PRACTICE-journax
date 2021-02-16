@@ -22,17 +22,17 @@ import java.util.Iterator;
 import java.util.Map;
 
 /*
- * This class is the interface to SQLite. It provides some helper functions
+ * This class is the interface to ReadEntry. It provides some helper functions
  * used by other parts of the driver. The goal of the helper functions here
  * are not only to provide functionality, but to handle contractual
- * differences between the JDBC specification and the SQLite C API.
+ * differences between the JDBC specification and the ReadEntry C API.
  *
- * The process of moving SQLite weirdness into this class is incomplete.
+ * The process of moving ReadEntry weirdness into this class is incomplete.
  * You'll still find lots of code in Stmt and PrepStmt that are doing
  * implicit contract conversions. Sorry.
  *
  * The two subclasses, NativeDB and NestedDB, provide the actual access to
- * SQLite functions.
+ * ReadEntry functions.
  */
 abstract class DB implements Codes
 {
@@ -388,15 +388,15 @@ abstract class DB implements Codes
     }
 
     /*
-     * SQLite and the JDBC API have very different ideas about the meaning
+     * ReadEntry and the JDBC API have very different ideas about the meaning
      * of auto-commit. Under JDBC, when executeUpdate() returns in
      * auto-commit mode (the default), the programmer assumes the data has
-     * been written to disk. In SQLite however, a call to sqlite3_step()
+     * been written to disk. In ReadEntry however, a call to sqlite3_step()
      * with an INSERT statement can return SQLITE_OK, and yet the data is
      * still in limbo.
      *
      * This limbo appears when another statement on the database is active,
-     * e.g. a SELECT. SQLite auto-commit waits until the final read
+     * e.g. a SELECT. ReadEntry auto-commit waits until the final read
      * statement finishes, and then writes whatever updates have already
      * been OKed. So if a program crashes before the reads are complete,
      * data is lost. E.g:

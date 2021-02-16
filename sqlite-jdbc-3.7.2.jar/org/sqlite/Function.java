@@ -17,11 +17,11 @@ package org.sqlite;
 
 import java.sql.*;
 
-/** Provides an interface for creating SQLite user-defined functions.
+/** Provides an interface for creating ReadEntry user-defined functions.
  *
  * <p>A subclass of <tt>org.sqlite.Function</tt> can be registered with
  * <tt>Function.create()</tt> and called by the name it was given. All
- * functions must implement <tt>xFunc()</tt>, which is called when SQLite
+ * functions must implement <tt>xFunc()</tt>, which is called when ReadEntry
  * runs the custom function.</p>
  *
  * Eg.
@@ -63,7 +63,7 @@ public abstract class Function
     public static final void create(Connection conn, String name, Function f)
             throws SQLException {
         if (conn == null || !(conn instanceof Conn))
-            throw new SQLException("connection must be to an SQLite db");
+            throw new SQLException("connection must be to an ReadEntry db");
         if (conn.isClosed())
             throw new SQLException("connection closed");
 
@@ -81,12 +81,12 @@ public abstract class Function
     public static final void destroy(Connection conn, String name)
             throws SQLException {
         if (conn == null || !(conn instanceof Conn))
-            throw new SQLException("connection must be to an SQLite db");
+            throw new SQLException("connection must be to an ReadEntry db");
         ((Conn)conn).db().destroy_function(name);
     }
 
 
-    /** Called by SQLite as a custom function. Should access arguments
+    /** Called by ReadEntry as a custom function. Should access arguments
      *  through <tt>value_*(int)</tt>, return results with
      *  <tt>result(*)</tt> and throw errors with <tt>error(String)</tt>. */
     protected abstract void xFunc() throws SQLException;

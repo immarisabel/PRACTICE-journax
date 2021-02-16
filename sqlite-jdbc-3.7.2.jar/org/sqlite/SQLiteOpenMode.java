@@ -25,7 +25,7 @@
 package org.sqlite;
 
 /**
- * Database file open modes of SQLite.
+ * Database file open modes of ReadEntry.
  * 
  * See also http://sqlite.org/c3ref/open.html
  * 

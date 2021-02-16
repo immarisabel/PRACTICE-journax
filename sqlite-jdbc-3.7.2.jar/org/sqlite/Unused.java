@@ -26,7 +26,7 @@ import java.util.Map;
 abstract class Unused
 {
     private SQLException unused() {
-        return new SQLException("not implemented by SQLite JDBC driver");
+        return new SQLException("not implemented by ReadEntry JDBC driver");
     }
 
 

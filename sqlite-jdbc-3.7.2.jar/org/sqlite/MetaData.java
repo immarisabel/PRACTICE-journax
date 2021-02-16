@@ -234,7 +234,7 @@ class MetaData implements DatabaseMetaData
     }
 
     public String getDatabaseProductName() {
-        return "SQLite";
+        return "ReadEntry";
     }
 
     public String getDatabaseProductVersion() throws SQLException {
@@ -1191,9 +1191,7 @@ class MetaData implements DatabaseMetaData
 
     /** Replace all instances of ' with '' */
     private String escape(final String val) {
-        // TODO: this function is ugly, pass this work off to SQLite, then we
-        //       don't have to worry about Unicode 4, other characters needing
-        //       escaping, etc.
+
         int len = val.length();
         StringBuffer buf = new StringBuffer(len);
         for (int i = 0; i < len; i++) {
@@ -1205,10 +1203,10 @@ class MetaData implements DatabaseMetaData
     }
 
     public Struct createStruct(String t, Object[] attr) throws SQLException {
-        throw new SQLException("Not yet implemented by SQLite JDBC driver");
+        throw new SQLException("Not yet implemented by ReadEntry JDBC driver");
     }
 
     public ResultSet getFunctionColumns(String a, String b, String c, String d) throws SQLException {
-        throw new SQLException("Not yet implemented by SQLite JDBC driver");
+        throw new SQLException("Not yet implemented by ReadEntry JDBC driver");
     }
 }

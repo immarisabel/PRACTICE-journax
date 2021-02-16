@@ -127,13 +127,13 @@ class Conn implements Connection
         }
         catch (Exception e) {} // fall through to nested library
 
-        // load nested library (pure-java SQLite)
+        // load nested library (pure-java ReadEntry)
         if (db == null) {
             try {
                 db = (DB) Class.forName("org.sqlite.NestedDB").newInstance();
             }
             catch (Exception e) {
-                throw new SQLException("no SQLite library found");
+                throw new SQLException("no ReadEntry library found");
             }
         }
 
@@ -229,11 +229,11 @@ class Conn implements Connection
 
     private void checkCursor(int rst, int rsc, int rsh) throws SQLException {
         if (rst != ResultSet.TYPE_FORWARD_ONLY)
-            throw new SQLException("SQLite only supports TYPE_FORWARD_ONLY cursors");
+            throw new SQLException("ReadEntry only supports TYPE_FORWARD_ONLY cursors");
         if (rsc != ResultSet.CONCUR_READ_ONLY)
-            throw new SQLException("SQLite only supports CONCUR_READ_ONLY cursors");
+            throw new SQLException("ReadEntry only supports CONCUR_READ_ONLY cursors");
         if (rsh != ResultSet.CLOSE_CURSORS_AT_COMMIT)
-            throw new SQLException("SQLite only supports closing cursors at commit");
+            throw new SQLException("ReadEntry only supports closing cursors at commit");
     }
 
     @Override
@@ -272,7 +272,7 @@ class Conn implements Connection
     public void setHoldability(int h) throws SQLException {
         checkOpen();
         if (h != ResultSet.CLOSE_CURSORS_AT_COMMIT)
-            throw new SQLException("SQLite only supports CLOSE_CURSORS_AT_COMMIT");
+            throw new SQLException("ReadEntry only supports CLOSE_CURSORS_AT_COMMIT");
     }
 
     public int getTransactionIsolation() {
@@ -288,7 +288,7 @@ class Conn implements Connection
             db.exec("PRAGMA read_uncommitted = true;");
             break;
         default:
-            throw new SQLException("SQLite supports only TRANSACTION_SERIALIZABLE and TRANSACTION_READ_UNCOMMITTED.");
+            throw new SQLException("ReadEntry supports only TRANSACTION_SERIALIZABLE and TRANSACTION_READ_UNCOMMITTED.");
         }
         transactionIsolation = level;
     }
@@ -376,7 +376,7 @@ class Conn implements Connection
     }
 
     public CallableStatement prepareCall(String sql, int rst, int rsc, int rsh) throws SQLException {
-        throw new SQLException("SQLite does not support Stored Procedures");
+        throw new SQLException("ReadEntry does not support Stored Procedures");
     }
 
     public PreparedStatement prepareStatement(String sql) throws SQLException {
@@ -419,22 +419,22 @@ class Conn implements Connection
     // UNUSED FUNCTIONS /////////////////////////////////////////////
 
     public Savepoint setSavepoint() throws SQLException {
-        throw new SQLException("unsupported by SQLite: savepoints");
+        throw new SQLException("unsupported by ReadEntry: savepoints");
     }
 
     public Savepoint setSavepoint(String name) throws SQLException {
-        throw new SQLException("unsupported by SQLite: savepoints");
+        throw new SQLException("unsupported by ReadEntry: savepoints");
     }
 
     public void releaseSavepoint(Savepoint savepoint) throws SQLException {
-        throw new SQLException("unsupported by SQLite: savepoints");
+        throw new SQLException("unsupported by ReadEntry: savepoints");
     }
 
     public void rollback(Savepoint savepoint) throws SQLException {
-        throw new SQLException("unsupported by SQLite: savepoints");
+        throw new SQLException("unsupported by ReadEntry: savepoints");
     }
 
     public Struct createStruct(String t, Object[] attr) throws SQLException {
-        throw new SQLException("unsupported by SQLite");
+        throw new SQLException("unsupported by ReadEntry");
     }
 }

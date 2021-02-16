@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * parsing SQLite specific extension of SQL command
+ * parsing ReadEntry specific extension of SQL command
  * 
  * @author leo
  * 

@@ -37,7 +37,7 @@ public enum SQLiteErrorCode {
     SQLITE_OK(0, "Successful result"),
     /* beginning-of-error-codes */
     SQLITE_ERROR(1, "SQL error or missing database"),
-    SQLITE_INTERNAL(2, "Internal logic error in SQLite"),
+    SQLITE_INTERNAL(2, "Internal logic error in ReadEntry"),
     SQLITE_PERM(3, " Access permission denied"),
     SQLITE_ABORT(4, " Callback routine requested an abort"),
     SQLITE_BUSY(5, " The database file is locked"),

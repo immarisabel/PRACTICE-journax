@@ -23,7 +23,7 @@ interface Codes
     /** SQL error or missing database */
     public static final int SQLITE_ERROR      =   1;
 
-    /** An internal logic error in SQLite */
+    /** An internal logic error in ReadEntry */
     public static final int SQLITE_INTERNAL   =   2;
 
     /** Access permission denied */

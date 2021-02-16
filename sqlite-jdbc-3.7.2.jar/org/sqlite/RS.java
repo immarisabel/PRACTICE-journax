@@ -66,7 +66,7 @@ final class RS extends Unused implements ResultSet, ResultSetMetaData, Codes
     // takes col in [1,x] form, returns in [0,x-1] form
     private int checkCol(int col) throws SQLException {
         if (colsMeta == null)
-            throw new IllegalStateException("SQLite JDBC: inconsistent internal state");
+            throw new IllegalStateException("ReadEntry JDBC: inconsistent internal state");
         if (col < 1 || col > colsMeta.length)
             throw new SQLException("column " + col + " out of bounds [1," + colsMeta.length + "]");
         return --col;
@@ -192,7 +192,7 @@ final class RS extends Unused implements ResultSet, ResultSetMetaData, Codes
     }
 
     public boolean isLast() throws SQLException { // FIXME
-        throw new SQLException("function not yet implemented for SQLite");
+        throw new SQLException("function not yet implemented for ReadEntry");
     }
 
     @Override

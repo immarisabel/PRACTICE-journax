@@ -58,7 +58,7 @@ class Stmt extends Unused implements Statement, Codes
         if (sql == null)
             throw new SQLException("SQLiteJDBC internal error: sql==null");
         if (rs.isOpen())
-            throw new SQLException("SQLite JDBC internal error: rs.isOpen() on exec.");
+            throw new SQLException("ReadEntry JDBC internal error: rs.isOpen() on exec.");
 
         boolean rc = false;
         try {
@@ -75,7 +75,7 @@ class Stmt extends Unused implements Statement, Codes
         if (sql == null)
             throw new SQLException("SQLiteJDBC internal error: sql==null");
         if (rs.isOpen())
-            throw new SQLException("SQLite JDBC internal error: rs.isOpen() on exec.");
+            throw new SQLException("ReadEntry JDBC internal error: rs.isOpen() on exec.");
 
         boolean rc = false;
         try {
@@ -304,7 +304,7 @@ class Stmt extends Unused implements Statement, Codes
     }
 
     /**
-     * As SQLite's last_insert_rowid() function is DB-specific not statement
+     * As ReadEntry's last_insert_rowid() function is DB-specific not statement
      * specific, this function introduces a race condition if the same
      * connection is used by two threads and both insert.
      */
@@ -312,7 +312,7 @@ class Stmt extends Unused implements Statement, Codes
         return ((MetaData) conn.getMetaData()).getGeneratedKeys();
     }
 
-    /** SQLite does not support multiple results from execute(). */
+    /** ReadEntry does not support multiple results from execute(). */
     public boolean getMoreResults() throws SQLException {
         return getMoreResults(0);
     }

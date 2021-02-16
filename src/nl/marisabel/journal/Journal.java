@@ -8,7 +8,11 @@ public class Journal {
 
     private static Scanner scanner = new Scanner(System.in);
     public Journal() throws ClassNotFoundException {
-        SQLite journal = new SQLite("","");
+        ReadEntry journal = new ReadEntry("","");
+        AddEntry add = new AddEntry("","");
+        DelEntry delete = new DelEntry("","");
+        ModEntry modify = new ModEntry("","");
+
         System.out.println("WELCOME TO JOURNAX!\nThe text edition\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
         int entryId;
@@ -30,16 +34,24 @@ public class Journal {
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Dear diary...");
                     entry = scanner.nextLine();
-                    journal.addEntry(today(),entry);
+                   add.addEntry(today(),entry);
                     break;
                 case 3:
-
+                    System.out.println("Enter Entry ID number...");
+                    entryId = scanner.nextInt();
+                    System.out.println("This is the current entry:\n");
+                    journal.getEntry(entryId, "Test from Journal.class");
+//                    System.out.println("write it out!   >>");
+//
+//                    entry = scanner.nextLine();
+//                    modify.updateEntry(entryId,entry);
                     break;
+
                 case 4:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Type the entry number you wish to delete...");
                     entryId = scanner.nextInt();
-                    journal.deleteEntry(entryId);
+                    delete.deleteEntry(entryId);
                     break;
                 case 5:
                     //TODO search

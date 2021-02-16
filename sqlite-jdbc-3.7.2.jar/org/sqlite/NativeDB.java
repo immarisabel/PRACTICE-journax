@@ -21,7 +21,7 @@ import java.sql.SQLException;
 /** This class provides a thin JNI layer over the SQLite3 C API. */
 final class NativeDB extends DB
 {
-    /** SQLite connection handle. */
+    /** ReadEntry connection handle. */
     long                   pointer       = 0;
 
     private static boolean isLoaded      = false;
