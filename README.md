@@ -43,37 +43,40 @@ __WHAT I WISH TO HAVE__
 - learning API integration for things like the weather or spellchecker based on the computer's own options
 
 ---
+#### JAN 4 - 10, 2021:
+first week
+#### FEB 17 2021: 
+It has been over a month. I learned a lot about SQL and other Java concepts like OOO. Doing some work on the code to manipulate the SQL and dividing into their own classes before implementing any improvements.
 
-## Week 1: JAN 4 - 10, 2021
+
+
+
 __TO DO__
-
 - [x] Complete idea/concept 
-- [x] Initial code flow 
-
-## Week 2:
-__TO DO__
-
-- [ ] section 5 from the Java course
-- [ ] Start on SQL course first 2 sections
-- [ ] Start building the database and what I want to be included by default
-
-## Week 3:
-__TO DO__
-
-- [ ] sections 6 & 7 from the Java course
+- [x] Initial code flow
+- [x] section 5 from the Java course
+- [x] Start on SQL course first 2 sections
+- [x] Start building the database and what I want to be included by default
+- [x] sections 6 & 7 from the Java course
 - [ ] Initiate first login screen with lock and unlock function
 - [ ] Store and update username and password in the database
-
-## Week 4:
-__TO DO__
-
-- [ ] SQL course 2 sections
+- [x] SQL course 2 sections
 - [ ] Create main journal input fields
-- [ ] Access journal entries to manipulate data as wished
-
-## Week 5:
-__TO DO__
-
-- [ ] SQL course 2 sections
+- [x] SQL course 2 sections
 - [ ] Create multiple journals (and their databases) from inside the application
+
+- [ ] Delete option
+	- [ ] Delete chosen entry
+	- [ ] Show entry before deleting
+	- [ ] If NO, return to choose entry
+		- [ ] then cancel if chosen
+- [ ] Update option
+	- [ ] Update chosen entry
+	- [x] Show entry before Update
+	- [ ] If NO, return to choose entry
+		- [ ] then cancel if chosen
+	
+- [ ] Create a choice to randomly chose an entry according to random ID generation.
+
+	
 ```
