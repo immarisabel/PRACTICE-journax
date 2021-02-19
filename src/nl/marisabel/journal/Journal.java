@@ -1,21 +1,18 @@
 package nl.marisabel.journal;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Journal {
 
-
-    //TODO create a cancel option per case (specially DEL + MOD)
-
     private static Scanner scanner = new Scanner(System.in);
+
     public Journal() throws ClassNotFoundException, SQLException {
-        ReadEntry journal = new ReadEntry("","");
-        AddEntry add = new AddEntry("","");
-        DelEntry delete = new DelEntry("","");
-        ModEntry modify = new ModEntry("","");
+
+        ReadEntry journal = new ReadEntry();
+        AddEntry add = new AddEntry();
+        DelEntry delete = new DelEntry();
+        ModEntry modify = new ModEntry();
         NewJournal newJournal = new NewJournal();
 
         System.out.println("WELCOME TO JOURNAX!\nThe text edition\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
@@ -34,12 +31,17 @@ public class Journal {
                 case 1:
                     System.out.println(">>>>> ALL ENTRIES:\n");
                     journal.getEntries();
+                    printActions();
+
                     break;
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Dear diary...");
                     entry = scanner.nextLine();
-                   add.addEntry(today(),entry);
+                   add.addEntry(Date.today(),entry);
+
+                    printActions();
+
                     break;
                 case 3:
                     System.out.println("Type the entry number you wish to update...");
@@ -53,6 +55,8 @@ public class Journal {
                         modify.updateEntry(entryIdUpd);
 
                     }
+                    printActions();
+
                     break;
 
                 case 4:
@@ -67,6 +71,8 @@ public class Journal {
                         delete.deleteEntry(entryId);
 
                     }
+                    printActions();
+
                     break;
                 case 5:
                     //TODO search
@@ -81,24 +87,7 @@ public class Journal {
                     newJournal.delJournal();
                     break;
             }
-
-
         }
-
-
-
-    }
-
-
-
-
-
-    /*date GENERATOR*/
-
-    public static String today() {
-
-        LocalDateTime dateTime = LocalDateTime.now();
-        return dateTime.format(DateTimeFormatter.ofPattern("d MMM uuuu @ HH:mm"));
 
     }
 

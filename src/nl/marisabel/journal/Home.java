@@ -10,6 +10,4 @@ public class Home {
        new Journal();
 
     }
-
-
 }
