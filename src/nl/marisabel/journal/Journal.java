@@ -44,14 +44,29 @@ public class Journal {
                 case 3:
                     System.out.println("Type the entry number you wish to update...");
                     entryId = scanner.nextInt();
+                    int entryIdUpd = entryId;
                     journal.getEntry(entryId);
+                    System.out.println("Do you wish to update it? Type 1. yes or 2. no");
+                    int answer = scanner.nextInt();
+                    if (answer == 1)
+                    {
+                        modify.updateEntry(entryIdUpd);
+
+                    }
                     break;
 
                 case 4:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Type the entry number you wish to delete...");
                     entryId = scanner.nextInt();
-                    delete.deleteEntry(entryId);
+                    journal.getEntry(entryId);
+                    System.out.println("Do you wish to delete it? Type 1. yes or 2. no");
+                    answer = scanner.nextInt();
+                    if (answer == 1)
+                    {
+                        delete.deleteEntry(entryId);
+
+                    }
                     break;
                 case 5:
                     //TODO search
@@ -102,3 +117,4 @@ public class Journal {
         System.out.println("\nWhat do you wish to do?");
     }
 }
+
