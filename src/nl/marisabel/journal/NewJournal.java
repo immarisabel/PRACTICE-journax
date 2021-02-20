@@ -12,19 +12,25 @@ public class NewJournal {
         Connection connection = null;
 
 
-        String myTableName = "CREATE TABLE journal ("
+        String journalTable = "CREATE TABLE journal ("
                 + "entry_id INTEGER NOT NULL UNIQUE,"
                 + "entry_date TEXT NOT NULL,"
                 + "entry_content TEXT,"
                 + "PRIMARY KEY(entry_id AUTOINCREMENT))";
+
+        String categoriesTable = "CREATE TABLE categories ("
+                + "cat_id INTEGER NOT NULL UNIQUE,"
+                + "category TEXT NOT NULL DEFAULT 'no category',"
+                + "PRIMARY KEY(cat_id AUTOINCREMENT))";
 
         try {
             // create a database connection
             connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
-            statement.executeUpdate(myTableName);
-            System.out.println("Table Created");
+            statement.executeUpdate(journalTable);
+            statement.executeUpdate(categoriesTable);
+            System.out.println("Tables Created");
 
             System.out.println(">>>>>>>> journal created");
 
@@ -50,15 +56,16 @@ public class NewJournal {
         Connection connection = null;
 
 
-        String myTableName = "DROP TABLE journal";
+        String tables = "drop table if exists journal;" +
+                "drop table if exists categories;";
 
         try {
             // create a database connection
             connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
-            statement.executeUpdate(myTableName);
-            System.out.println("Table Created");
+            statement.executeUpdate(tables);
+            System.out.println("Tables Dropped");
 
             System.out.println(">>>>>>>> journal deleted");
 
