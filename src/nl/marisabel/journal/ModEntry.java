@@ -9,11 +9,11 @@ public class ModEntry {
 
     private final String newDate = Date.today();
 
-    public void updateEntry (int entryId) throws ClassNotFoundException {
+    public void updateEntry (int entryId) throws ClassNotFoundException, SQLException {
 
         Class.forName("org.sqlite.JDBC");
         Connection connection = null;
-        try {
+
             connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
@@ -26,16 +26,7 @@ public class ModEntry {
 
             System.out.println(">>>>>>>> ENTRY UPDATED");
 
-        } catch (
-                SQLException e) {
-             System.err.println(e.getMessage());
-        } finally {
-            try {
-                if (connection != null)
-                    connection.close();
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
+
         }
     }
-}
+

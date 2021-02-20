@@ -21,10 +21,12 @@ public class Journal {
         int entryId;
         String entry ;
         boolean quit = false;
-        while(!quit) {
+        while(!quit)
+        {
             int action = scanner.nextInt();
             scanner.nextLine();
-            switch (action) {
+            switch (action)
+            {
                 case 0:
                     System.out.println("\nClosing...");
                     quit = true;
@@ -57,7 +59,6 @@ public class Journal {
                     if (answer == 1)
                     {
                         modify.updateEntry(entryIdUpd);
-
                     }
                     printActions();
 
@@ -79,33 +80,9 @@ public class Journal {
 
                     break;
                 case 5:
-
                     //TODO move
                     cats.printActions();
-
-                    boolean quit2 = false;
-                    while(!quit2) {
-                        int action2 = scanner.nextInt();
-                        scanner.nextLine();
-                        switch (action2) {
-                            case 0:
-                            printActions();
-                            quit = true;
-                                break;
-                            case 1:
-                                cats.seeCategories();
-                                break;
-                            case 2:
-                                cats.addCategory();
-                                break;
-                            case 3:
-                                break;
-                            case 4:
-                                cats.delCategory(0);
-                                break;
-                        }                    break;
-
-                    }
+                    cats.catOptions();
                 case 6:
                     printActions();
                     break;
