@@ -53,7 +53,7 @@ public class ReadEntry {
             while(rs.next())
             {
                 System.out.println();
-                System.out.println("Entry number: " + rs.getInt("entry_id") + "\ndate: " + rs.getString("entry_date") +"\n");
+                System.out.println("Entry number: " + rs.getInt("entry_id") + "\ndate: " + rs.getString("entry_date") +"\ncategory: " + rs.getString("cat_id")+"\n");
                 System.out.println();
                 System.out.println(rs.getString("entry_content") + "\n");
                 System.out.println(".....................................");

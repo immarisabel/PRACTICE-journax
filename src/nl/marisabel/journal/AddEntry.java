@@ -5,16 +5,9 @@ import java.util.Scanner;
 
 public class AddEntry{
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    private  String newDate =Date.today();
-    private  String newEntry;
-    private int entryID;
-
-    public void addEntry(String newDate, String newEntry) throws ClassNotFoundException {
-
-        this.newDate = newDate;
-        this.newEntry = newEntry;
+    public void addEntry(String newDate, String newEntry, int categoryId) throws ClassNotFoundException {
 
         Class.forName("org.sqlite.JDBC");
         Connection connection = null;
@@ -24,9 +17,10 @@ public class AddEntry{
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
-            PreparedStatement prep = connection.prepareStatement("INSERT INTO journal (entry_content, entry_date) VALUES (?,?)"); /* TIME FORMAT! */
+            PreparedStatement prep = connection.prepareStatement("INSERT INTO journal (entry_content, entry_date, cat_id) VALUES (?,?,?)");
             prep.setString(1, newEntry);
             prep.setString(2, newDate);
+            prep.setInt(3, categoryId);
             prep.execute();
 
             System.out.println(">>>>>>>> ENTRY ADDED");

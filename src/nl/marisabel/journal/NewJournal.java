@@ -16,6 +16,7 @@ public class NewJournal {
                 + "entry_id INTEGER NOT NULL UNIQUE,"
                 + "entry_date TEXT NOT NULL,"
                 + "entry_content TEXT,"
+                +"cat_id INTEGER DEFAULT 1,"
                 + "PRIMARY KEY(entry_id AUTOINCREMENT))";
 
         String categoriesTable = "CREATE TABLE categories ("

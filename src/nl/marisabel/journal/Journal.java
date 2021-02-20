@@ -14,6 +14,7 @@ public class Journal {
         DelEntry delete = new DelEntry();
         ModEntry modify = new ModEntry();
         NewJournal newJournal = new NewJournal();
+        Categories cats = new Categories();
 
         System.out.println("WELCOME TO JOURNAX!\nThe text edition\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
@@ -38,7 +39,10 @@ public class Journal {
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Dear diary...");
                     entry = scanner.nextLine();
-                   add.addEntry(Date.today(),entry);
+                    System.out.println("What's the category?\nSelect a number and press enter:");
+                    cats.seeCategories();
+                    int catId = scanner.nextInt();
+                    add.addEntry(Date.today(),entry, catId);
 
                     printActions();
 
@@ -75,8 +79,33 @@ public class Journal {
 
                     break;
                 case 5:
-                    //TODO search
-                    break;
+
+                    //TODO move
+                    cats.printActions();
+
+                    boolean quit2 = false;
+                    while(!quit2) {
+                        int action2 = scanner.nextInt();
+                        scanner.nextLine();
+                        switch (action2) {
+                            case 0:
+                            printActions();
+                            quit = true;
+                                break;
+                            case 1:
+                                cats.seeCategories();
+                                break;
+                            case 2:
+                                cats.addCategory();
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                cats.delCategory(0);
+                                break;
+                        }                    break;
+
+                    }
                 case 6:
                     printActions();
                     break;
@@ -86,6 +115,7 @@ public class Journal {
                 case 8:
                     newJournal.delJournal();
                     break;
+
             }
         }
 
@@ -99,7 +129,7 @@ public class Journal {
                 "2  - to add a new entry\n" +
                 "3  - to update an existing entry\n" +
                 "4  - to remove an existing entry\n" +
-                "5  - search for tags\n" +
+                "5  - see categories\n" +
                 "6  - to see options again\n" +
                 "7  - create journal \n" +
                 "8  - delete");
