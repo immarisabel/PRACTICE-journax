@@ -9,17 +9,14 @@ public class Journal {
 
     public Journal() throws ClassNotFoundException, SQLException {
 
-        ReadEntry journal = new ReadEntry();
-        AddEntry add = new AddEntry();
-        DelEntry delete = new DelEntry();
-        ModEntry modify = new ModEntry();
+        Entries entry = new Entries();
         NewJournal newJournal = new NewJournal();
         Categories cats = new Categories();
 
         System.out.println("WELCOME TO JOURNAX!\nThe text edition\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
         int entryId;
-        String entry ;
+        String newEntry ;
         boolean quit = false;
         while(!quit)
         {
@@ -33,18 +30,18 @@ public class Journal {
                     break;
                 case 1:
                     System.out.println(">>>>> ALL ENTRIES:\n");
-                    journal.getEntries();
+                    entry.getEntries();
                     printActions();
 
                     break;
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Dear diary...");
-                    entry = scanner.nextLine();
+                    newEntry = scanner.nextLine();
                     System.out.println("What's the category?\nSelect a number and press enter:");
                     cats.seeCategories();
                     int catId = scanner.nextInt();
-                    add.addEntry(Date.today(),entry, catId);
+                    entry.addEntry(Date.today(),newEntry, catId);
 
                     printActions();
 
@@ -53,12 +50,12 @@ public class Journal {
                     System.out.println("Type the entry number you wish to update...");
                     entryId = scanner.nextInt();
                     int entryIdUpd = entryId;
-                    journal.getEntry(entryId);
+                    entry.getEntry(entryId);
                     System.out.println("Do you wish to update it? Type 1. yes or 2. no");
                     int answer = scanner.nextInt();
                     if (answer == 1)
                     {
-                        modify.updateEntry(entryIdUpd);
+                        entry.updateEntry(entryIdUpd);
                     }
                     printActions();
 
@@ -68,12 +65,13 @@ public class Journal {
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Type the entry number you wish to delete...");
                     entryId = scanner.nextInt();
-                    journal.getEntry(entryId);
+                    entry.getEntry(entryId);
                     System.out.println("Do you wish to delete it? Type 1. yes or 2. no");
                     answer = scanner.nextInt();
                     if (answer == 1)
                     {
-                        delete.deleteEntry(entryId);
+
+                        entry.deleteEntry(entryId);
 
                     }
                     printActions();

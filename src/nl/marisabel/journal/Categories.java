@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 public class Categories {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanCat = new Scanner(System.in);
+    private String newCategory;
+    private int catId = 0;
 
-    public void addCategory() throws ClassNotFoundException, SQLException {
+    public void addCategory(String newCategory) throws ClassNotFoundException, SQLException {
 
         Class.forName("org.sqlite.JDBC");
         Connection connection = null;
@@ -15,30 +17,49 @@ public class Categories {
         connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
         Statement statement = connection.createStatement();
         statement.setQueryTimeout(30);
-        
-        System.out.println("Add a category...");
-        String category = scanner.nextLine();
-        
+
         PreparedStatement prep = connection.prepareStatement("INSERT INTO categories (category) VALUES (?) ");
-        prep.setString(1, category);
+        prep.setString(1, newCategory);
         prep.execute();
 
         System.out.println(">>>>>>>> CATEGORY ADDED");
 
     }
 
-    public void delCategory(int catId) throws ClassNotFoundException, SQLException {
-        Class.forName("org.sqlite.JDBC");
-        Connection connection = null;
+    public void updateCategory (int catId) throws ClassNotFoundException, SQLException {
 
-        connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
+        Class.forName("org.sqlite.JDBC");
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
         Statement statement = connection.createStatement();
         statement.setQueryTimeout(30);
-        PreparedStatement prep = connection.prepareStatement("DELETE FROM categories WHERE cat_id = ?");
-        prep.setInt(1, catId);
+
+        System.out.println("Please update the category...");
+        String newCategory = scanCat.nextLine();
+
+        PreparedStatement prep = connection.prepareStatement("UPDATE categories set category = ? WHERE cat_id = ?");
+        prep.setString(1, newCategory);
         prep.execute();
 
-        System.out.println(">>>>>>>> CATEGORY DELETED");
+        System.out.println(">>>>>>>> CATEGORY UPDATED");
+
+    }
+
+    public void getCategory(int catId) throws SQLException, ClassNotFoundException {
+
+        this.catId = catId;
+
+        Class.forName("org.sqlite.JDBC");
+        Connection  connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
+        Statement stmt = connection.createStatement();
+
+        PreparedStatement prep = connection.prepareStatement("SELECT * FROM categories WHERE cat_id = ?");
+        prep.setInt(1, catId);
+        prep.execute();
+        ResultSet rs = prep.getResultSet();
+
+        while(rs.next()){
+            System.out.println(rs.getString("category"));
+        }
     }
 
     public void seeCategories () throws ClassNotFoundException, SQLException {
@@ -57,23 +78,18 @@ public class Categories {
 
     }
 
-    public void updateCategory (int catId) throws ClassNotFoundException, SQLException {
-
+    public void delCategory(int catId) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         Connection connection = null;
 
-            connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-            System.out.println("Please update the category...");
-            String newCat = scanner.nextLine();
-            PreparedStatement prep = connection.prepareStatement("UPDATE categories set category = ? WHERE cat_id = ?");
-            prep.setString(1, newCat);
-            prep.setInt(2, catId);
-            prep.execute();
+        connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
+        Statement statement = connection.createStatement();
+        statement.setQueryTimeout(30);
+        PreparedStatement prep = connection.prepareStatement("DELETE FROM categories WHERE cat_id = ?");
+        prep.setInt(1, catId);
+        prep.execute();
 
-            System.out.println(">>>>>>>> CATEGORY UPDATED");
-
+        System.out.println(">>>>>>>> CATEGORY DELETED");
     }
 
     public void printActions() {
@@ -89,12 +105,12 @@ public class Categories {
     }
 
     public void catOptions() throws SQLException, ClassNotFoundException {
-
+        String newCategory;
         boolean quit = false;
         while(!quit)
         {
-            int action = scanner.nextInt();
-            scanner.nextLine();
+            int action = scanCat.nextInt();
+            scanCat.nextLine();
             switch (action)
             {
                 case 0:
@@ -104,28 +120,29 @@ public class Categories {
                     seeCategories();
                     break;
                 case 2:
-                    addCategory();
+                    System.out.println("Add a category...");
+                    newCategory = scanCat.nextLine();
+                    addCategory(newCategory);
                     break;
                 case 3:
                     System.out.println("Type the category ID number you wish to update...");
-                    int catId = scanner.nextInt();
+                    catId = scanCat.nextInt();
                     int newCatId = catId;
-                   // journal.getEntry(entryId);
+                    getCategory(catId);
                     System.out.println("Do you wish to update it? Type 1. yes or 2. no");
-                    int answer = scanner.nextInt();
+                    int answer = scanCat.nextInt();
                     if (answer == 1)
                     {
                         updateCategory(newCatId);
                     }
-
-
+                   catOptions();
                     break;
                 case 4:
                     System.out.println("Type the category number you wish to delete...");
-                    catId = scanner.nextInt();
+                    catId = scanCat.nextInt();
                     //getCategory(catId);
                     System.out.println("Do you wish to delete it? Type 1. yes or 2. no");
-                    answer = scanner.nextInt();
+                    answer = scanCat.nextInt();
                     if (answer == 1)
                     {
                        delCategory(catId);
