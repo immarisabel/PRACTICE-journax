@@ -92,13 +92,38 @@ public class Categories {
         System.out.println(">>>>>>>> CATEGORY DELETED");
     }
 
+    public void readCategory(int catId) throws SQLException, ClassNotFoundException {
+
+            this.catId = catId;
+
+            Class.forName("org.sqlite.JDBC");
+            Connection  connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
+            Statement stmt = connection.createStatement();
+
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT * FROM journal,categories WHERE journal.cat_id = categories.cat_id AND categories.cat_id = ? ");
+            prep.setInt(1, catId);
+            prep.execute();
+            ResultSet rs = prep.getResultSet();
+            while(rs.next()){
+                System.out.println();
+                System.out.println("\nCATEGORY: " + rs.getString("category")+"\n");
+                System.out.println("Entry number: " + rs.getInt("entry_id") + "\n" + rs.getString("entry_date"));
+                System.out.println();
+                System.out.println(rs.getString("entry_content") + "\n");
+                System.out.println(".....................................");
+            }
+        }
+
+
     public void printActions() {
         System.out.println("\nOptions:\n");
         System.out.println("0  - to close\n" +
                 "1  - see all categories\n" +
                 "2  - to add a new category\n" +
                 "3  - to modify a category\n" +
-                "4  - to remove a category\n"
+                "4  - to remove a category\n" +
+                "5  - read a category\n"
         );
 
         System.out.println("\nWhat do you wish to do?");
@@ -148,6 +173,12 @@ public class Categories {
                        delCategory(catId);
                     }
                     delCategory(0);
+                    break;
+                case 5:
+                    System.out.println("Type the entry number you wish to read...");
+                    seeCategories();
+                    catId = scanCat.nextInt();
+                    readCategory(catId);
                     break;
             }
         }
