@@ -12,8 +12,9 @@ public class Journal {
         Entries entry = new Entries();
         NewJournal newJournal = new NewJournal();
         Categories cats = new Categories();
-
-        System.out.println("WELCOME TO JOURNAX!\nThe text edition\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
+        Search search = new Search();
+        System.out.println();
+        System.out.println("WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
         int entryId;
         String newEntry ;
@@ -32,7 +33,6 @@ public class Journal {
                     System.out.println(">>>>> ALL ENTRIES:\n");
                     entry.getEntries();
                     printActions();
-
                     break;
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
@@ -42,7 +42,6 @@ public class Journal {
                     cats.seeCategories();
                     int catId = scanner.nextInt();
                     entry.addEntry(Date.today(),newEntry, catId);
-
                     printActions();
 
                     break;
@@ -82,12 +81,17 @@ public class Journal {
                     cats.printActions();
                     cats.catOptions();
                 case 6:
-                    printActions();
+                    System.out.println("Search for a word...");
+                    String searchWord = scanner.nextLine();
+                    search.searchEntries(searchWord);
                     break;
                 case 7:
-                    newJournal.createJournal();
+                    printActions();
                     break;
                 case 8:
+                    newJournal.createJournal();
+                    break;
+                case 9:
                     newJournal.delJournal();
                     break;
 
@@ -98,17 +102,19 @@ public class Journal {
 
 
     private static void printActions() {
-        System.out.println("\nOptions:\n");
-        System.out.println("0  - to close\n" +
-                "1  - to read all entries\n" +
-                "2  - to add a new entry\n" +
-                "3  - to update an existing entry\n" +
-                "4  - to remove an existing entry\n" +
-                "5  - see categories\n" +
-                "6  - to see options again\n" +
-                "7  - create journal \n" +
-                "8  - delete");
-        System.out.println("\nWhat do you wish to do?");
+        System.out.println("OPTIONS:\n");
+        System.out.println("0  - ❌ close\n" +
+                "1  - 📖 read journal \n" +
+                "2  - ➕ new entry\n" +
+                "3  - ✒ update entry\n" +
+                "4  - ♻ remove entry\n" +
+                "5  - CATEGORIES\n" +
+                "6  - 🔎 search entries\n" +
+                "\n"+
+                "7  - options\n" +
+                "8  - 🔨 create journal \n" +
+                "9 - ⚠ delete journal");
+        System.out.println("\nWhat do you wish to do? \nType the number of the option.");
     }
 }
 
