@@ -15,7 +15,7 @@ public class NewJournal {
         String journalTable = "CREATE TABLE journal ("
                 + "entry_id INTEGER NOT NULL UNIQUE,"
                 + "entry_date TEXT NOT NULL,"
-                + "entry_content TEXT,"
+                + "entry_content MEDIUMTEXT,"
                 +"cat_id INTEGER DEFAULT 1,"
                 + "PRIMARY KEY(entry_id AUTOINCREMENT))";
 

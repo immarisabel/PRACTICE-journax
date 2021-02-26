@@ -14,7 +14,7 @@ public class Search {
         Statement statement = connection.createStatement();
         statement.setQueryTimeout(30);
 
-        PreparedStatement prep = connection.prepareStatement("SELECT * FROM journal WHERE entry_content LIKE ? ");
+        PreparedStatement prep = connection.prepareStatement("SELECT * FROM journal WHERE entry_content LIKE ? ORDER BY entry_date ");
         prep.setString(1, "%" + searchWord + "%");
         prep.execute();
 

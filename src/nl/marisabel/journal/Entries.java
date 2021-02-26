@@ -76,12 +76,14 @@ public class Entries {
         Statement statement = connection.createStatement();
         statement.setQueryTimeout(30);
 
-        String query = "SELECT * FROM journal";
+        String query = "SELECT * FROM journal LEFT JOIN categories WHERE journal.cat_id = categories.cat_id";
         ResultSet rs = statement.executeQuery(query);
         while(rs.next())
         {
             System.out.println();
-            System.out.println("Entry number: " + rs.getInt("entry_id") + "\ndate: " + rs.getString("entry_date") +"\ncategory: " + rs.getString("cat_id")+"\n");
+            System.out.println("Entry number: " + rs.getInt("entry_id"));
+            System.out.println(rs.getString("entry_date"));
+            System.out.println("Category: "+rs.getString("category"));
             System.out.println();
             System.out.println(rs.getString("entry_content") + "\n");
             System.out.println(".....................................");
