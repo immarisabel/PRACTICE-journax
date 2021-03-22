@@ -21,8 +21,7 @@ public class Journal {
         boolean quit = false;
         while(!quit)
         {
-            int action = scanner.nextInt();
-            scanner.nextLine();
+            int action = Input.getInt();
             switch (action)
             {
                 case 0:

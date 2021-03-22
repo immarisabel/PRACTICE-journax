@@ -21,11 +21,11 @@ GenericExample();
     }
 
 // This gives an error and it is good! Because we can fix it and see it easier!
-    public static <Integer> void GenericExampleGood () {
-        ArrayList<Integer> a = new ArrayList< >();
-        a.add(15);
-        a.add("15");
-        Integer b = a.get(1);
-    }
+//    public static <Integer> void GenericExampleGood () {
+//        ArrayList<Integer> a = new ArrayList< >();
+//        a.add(15);
+//        a.add("15");
+//        Integer b = a.get(1);
+//    }
 
 }
