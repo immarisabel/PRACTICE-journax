@@ -17,7 +17,7 @@ public class Journal {
         System.out.println("WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
         printActions();
         int entryId;
-        String newEntry = "" ;
+        StringBuilder newEntry = new StringBuilder();
         boolean quit = false;
         while(!quit)
         {
@@ -36,17 +36,17 @@ public class Journal {
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Dear diary...");
-                    newEntry = scanner.next();
+                    newEntry = new StringBuilder(scanner.nextLine()+"_");
                     while(scanner.hasNext()) {
-                       String newEntryP = scanner.next();
+                       String newEntryP = scanner.nextLine();
                         if(newEntryP.equals("end")) break;
-                        newEntry = newEntry + newEntryP;
+                        newEntry.append(newEntryP);
                     }
 
                     System.out.println("What's the category?\nSelect a number and press enter:");
                     cats.seeCategories();
                     int catId = scanner.nextInt();
-                    entry.addEntry(Date.today(),newEntry, catId);
+                    entry.addEntry(Date.today(), newEntry.toString(), catId);
                     printActions();
 
                     break;
