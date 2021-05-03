@@ -3,6 +3,8 @@ package nl.marisabel.journal;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import static nl.marisabel.Colors.*;
+
 public class Journal {
 
     private static Scanner scanner = new Scanner(System.in);
@@ -14,10 +16,12 @@ public class Journal {
         Categories cats = new Categories();
         Search search = new Search();
         System.out.println();
-        System.out.println("WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
+        System.out.println(ANSI_GREEN + "WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n" + ANSI_PURPLE + "♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
+        System.out.println(ANSI_RESET);
         printActions();
         int entryId;
         StringBuilder newEntry = new StringBuilder();
+        System.out.println(ANSI_BLUE);
         boolean quit = false;
         while(!quit)
         {
@@ -119,7 +123,7 @@ public class Journal {
                 "7  - options\n" +
                 "8  - 🔨 create journal \n" +
                 "9 - ⚠ delete journal");
-        System.out.println("\nWhat do you wish to do? \nType the number of the option.");
+        System.out.println(ANSI_BLUE + "\nWhat do you wish to do? \nType the number of the option.");
     }
 }
 
