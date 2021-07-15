@@ -3,6 +3,9 @@ package nl.marisabel.journal;
 import java.sql.*;
 import java.util.Scanner;
 
+import static nl.marisabel.Colors.ANSI_CYAN;
+import static nl.marisabel.Colors.ANSI_GREEN;
+
 public class Entries {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -81,7 +84,7 @@ public class Entries {
         while(rs.next())
         {
             System.out.println();
-            System.out.println("Entry number: " + rs.getInt("entry_id"));
+            System.out.println(ANSI_CYAN +"Entry number: " + rs.getInt("entry_id"));
             System.out.println(rs.getString("entry_date"));
             System.out.println("Category: "+rs.getString("category"));
             System.out.println();

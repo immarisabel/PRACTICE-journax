@@ -23,11 +23,9 @@ public class Journal {
         StringBuilder newEntry = new StringBuilder();
         System.out.println(ANSI_BLUE);
         boolean quit = false;
-        while(!quit)
-        {
+        while (!quit) {
             int action = Input.getInt();
-            switch (action)
-            {
+            switch (action) {
                 case 0:
                     System.out.println("\nClosing...");
                     quit = true;
@@ -35,15 +33,16 @@ public class Journal {
                 case 1:
                     System.out.println(">>>>> ALL ENTRIES:\n");
                     entry.getEntries();
+                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
-                    System.out.println("Dear diary...");
-                    newEntry = new StringBuilder(scanner.nextLine()+"_");
-                    while(scanner.hasNext()) {
-                       String newEntryP = scanner.nextLine();
-                        if(newEntryP.equals("end")) break;
+                    System.out.println(ANSI_GREEN +"Dear diary...");
+                    newEntry = new StringBuilder(scanner.nextLine() + "_");
+                    while (scanner.hasNext()) {
+                        String newEntryP = scanner.nextLine();
+                        if (newEntryP.equals("end")) break;
                         newEntry.append(newEntryP);
                     }
 
@@ -51,8 +50,8 @@ public class Journal {
                     cats.seeCategories();
                     int catId = scanner.nextInt();
                     entry.addEntry(Date.today(), newEntry.toString(), catId);
+                    System.out.println(ANSI_RESET);
                     printActions();
-
                     break;
                 case 3:
                     System.out.println("Type the entry number you wish to update...");
@@ -61,12 +60,11 @@ public class Journal {
                     entry.getEntry(entryId);
                     System.out.println("Do you wish to update it? Type 1. yes or 2. no");
                     int answer = scanner.nextInt();
-                    if (answer == 1)
-                    {
+                    if (answer == 1) {
                         entry.updateEntry(entryIdUpd);
                     }
+                    System.out.println(ANSI_RESET);
                     printActions();
-
                     break;
 
                 case 4:
@@ -76,14 +74,11 @@ public class Journal {
                     entry.getEntry(entryId);
                     System.out.println("Do you wish to delete it? Type 1. yes or 2. no");
                     answer = scanner.nextInt();
-                    if (answer == 1)
-                    {
-
+                    if (answer == 1) {
                         entry.deleteEntry(entryId);
-
                     }
+                    System.out.println(ANSI_RESET);
                     printActions();
-
                     break;
                 case 5:
                     //TODO move
@@ -93,8 +88,11 @@ public class Journal {
                     System.out.println("Search for a word...");
                     String searchWord = scanner.nextLine();
                     search.searchEntries(searchWord);
+                    System.out.println(ANSI_RESET);
+
                     break;
                 case 7:
+                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
                 case 8:
@@ -119,7 +117,7 @@ public class Journal {
                 "4  - ♻ remove entry\n" +
                 "5  - CATEGORIES\n" +
                 "6  - 🔎 search entries\n" +
-                "\n"+
+                "\n" +
                 "7  - options\n" +
                 "8  - 🔨 create journal \n" +
                 "9 - ⚠ delete journal");
