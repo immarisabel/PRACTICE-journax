@@ -67,7 +67,6 @@ tried to implement LOGIN/LOCK journal methods
 - [ ] Create main journal input fields
 - [x] SQL course 2 sections
 - [ ] Create multiple journals (and their databases) from inside the application
-- [ ] allow multiple line input (need to study more about I/O for this. Using a ListArray of lines?)
 
 - [x ] Delete option
 	- [ x] Delete chosen entry

@@ -1,6 +1,5 @@
 package nl.marisabel.journal;
 
-
 import java.sql.SQLException;
 
 public class Home {

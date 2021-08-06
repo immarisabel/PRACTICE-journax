@@ -3,12 +3,12 @@ package nl.marisabel.journal;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import static nl.marisabel.Colors.*;
+
 
 public class Journal {
 
     private static Scanner scanner = new Scanner(System.in);
-
+    
     public Journal() throws ClassNotFoundException, SQLException {
 
         Entries entry = new Entries();
@@ -16,12 +16,10 @@ public class Journal {
         Categories cats = new Categories();
         Search search = new Search();
         System.out.println();
-        System.out.println(ANSI_GREEN + "WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n" + ANSI_PURPLE + "♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ \n");
-        System.out.println(ANSI_RESET);
+        System.out.println("WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n" +  "-------- \n");
         printActions();
         int entryId;
         StringBuilder newEntry = new StringBuilder();
-        System.out.println(ANSI_BLUE);
         boolean quit = false;
         while (!quit) {
             int action = Input.getInt();
@@ -33,12 +31,11 @@ public class Journal {
                 case 1:
                     System.out.println(">>>>> ALL ENTRIES:\n");
                     entry.getEntries();
-                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
-                    System.out.println(ANSI_GREEN +"Dear diary...");
+                    System.out.println("Dear diary...");
                     newEntry = new StringBuilder(scanner.nextLine() + "_");
                     while (scanner.hasNext()) {
                         String newEntryP = scanner.nextLine();
@@ -50,7 +47,6 @@ public class Journal {
                     cats.seeCategories();
                     int catId = scanner.nextInt();
                     entry.addEntry(Date.today(), newEntry.toString(), catId);
-                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
                 case 3:
@@ -63,7 +59,6 @@ public class Journal {
                     if (answer == 1) {
                         entry.updateEntry(entryIdUpd);
                     }
-                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
 
@@ -77,7 +72,6 @@ public class Journal {
                     if (answer == 1) {
                         entry.deleteEntry(entryId);
                     }
-                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
                 case 5:
@@ -88,11 +82,9 @@ public class Journal {
                     System.out.println("Search for a word...");
                     String searchWord = scanner.nextLine();
                     search.searchEntries(searchWord);
-                    System.out.println(ANSI_RESET);
 
                     break;
                 case 7:
-                    System.out.println(ANSI_RESET);
                     printActions();
                     break;
                 case 8:
@@ -110,18 +102,18 @@ public class Journal {
 
     private static void printActions() {
         System.out.println("OPTIONS:\n");
-        System.out.println("0  - ❌ close\n" +
-                "1  - 📖 read journal \n" +
-                "2  - ➕ new entry\n" +
-                "3  - ✒ update entry\n" +
-                "4  - ♻ remove entry\n" +
+        System.out.println("0  - close\n" +
+                "1  - read journal \n" +
+                "2  - new entry\n" +
+                "3  - update entry\n" +
+                "4  - remove entry\n" +
                 "5  - CATEGORIES\n" +
-                "6  - 🔎 search entries\n" +
+                "6  - search entries\n" +
                 "\n" +
                 "7  - options\n" +
-                "8  - 🔨 create journal \n" +
-                "9 - ⚠ delete journal");
-        System.out.println(ANSI_BLUE + "\nWhat do you wish to do? \nType the number of the option.");
+                "8  - create journal \n" +
+                "9 - delete journal");
+        System.out.println( "\nWhat do you wish to do? \nType the number of the option.");
     }
 }
 
