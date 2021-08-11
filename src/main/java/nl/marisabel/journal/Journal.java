@@ -19,11 +19,12 @@ public class Journal {
         System.out.println("WELCOME TO JOURNAX!\ntext version\nBuilt JAN 2021\n" +  "-------- \n");
         printActions();
         int entryId;
-        StringBuilder newEntry = new StringBuilder();
+       // String newEntry = new StringBuilder();
         boolean quit = false;
         while (!quit) {
             int action = Input.getInt();
-            switch (action) {
+            String newEntry;
+			switch (action) {
                 case 0:
                     System.out.println("\nClosing...");
                     quit = true;
@@ -36,11 +37,11 @@ public class Journal {
                 case 2:
                     //TODO create a loop where if chosen, you write and after, you press another number to save.
                     System.out.println("Dear diary...");
-                    newEntry = new StringBuilder(scanner.nextLine() + "_");
+                    newEntry = scanner.nextLine();
                     while (scanner.hasNext()) {
                         String newEntryP = scanner.nextLine();
                         if (newEntryP.equals("end")) break;
-                        newEntry.append(newEntryP);
+                        newEntry = (newEntry+"\n"+ newEntryP);
                     }
 
                     System.out.println("What's the category?\nSelect a number and press enter:");
