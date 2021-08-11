@@ -67,18 +67,18 @@ tried to implement LOGIN/LOCK journal methods
 - [ ] Create main journal input fields
 - [x] SQL course 2 sections
 - [ ] Create multiple journals (and their databases) from inside the application
-- [x ] allow multiple line input 11/8/21
+- [x] allow multiple line input 11/8/21
 
-- [x ] Delete option
-- [ x] Delete chosen entry
-- [x ] Show entry before deleting
-- [x ] If NO, return to choose entry
-- [x ] then cancel if chosen
-- [x ] Update option
-- [x ] Update chosen entry
+- [x] Delete option
+- [x] Delete chosen entry
+- [x] Show entry before deleting
+- [x] If NO, return to choose entry
+- [x] then cancel if chosen
+- [x] Update option
+- [x] Update chosen entry
 - [x] Show entry before Update
-- [x ] If NO, return to choose entry
-- [x ] then cancel if chosen
+- [x] If NO, return to choose entry
+- [x] then cancel if chosen
 	
 - [ ] Create a choice to randomly chose an entry according to random ID generation.
 
