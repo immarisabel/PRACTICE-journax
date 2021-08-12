@@ -7,36 +7,34 @@ public class Home {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-		// create login class
-		// create table for login by password
-		// initialize input by setting password & reminder
-		// store pw in database
-		// loop to check for pw. If OK, load new Journal();, if not, ask again.
-		// offer reminder if wrong password
-		
-		
-		
-		String pw = "";
-		pw = "test";
-		String reminder = "";
-		reminder ="this is my reminder";
+		Login login = new Login();
+		login.getLogin();
+		Scanner scan = new Scanner(System.in);
+
 		boolean correct = false;
 
+		System.out.println("current pw: " + login.getPw());
+
+		if (login.getCountLogin() < 1) {
+
+			login.setLogin();
+		}
+
 		while (!correct) {
-
+			login.getLogin();
+			String pw = login.getPw();
+			String reminder = login.getReminder();
 			System.out.println("\nWhat's the password?");
-			Scanner scan = new Scanner(System.in);
 			String askPW = scan.nextLine();
-
 			if (askPW.equals(pw)) {
 				new Journal();
 			}
 
 			System.out.println("\nSorry, try again.\n");
-			System.out.println("Your reminder: " + reminder );
-			
-		}
+			System.out.println("Your reminder: " + reminder);
 
-	}			
+		}
+		scan.close();
+	}
 
 }

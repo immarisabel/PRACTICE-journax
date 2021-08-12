@@ -1,0 +1,4 @@
+how to check if empty:
+	select count(*) from employee == 0 // NO!
+	select 1 from login limit 1
+		if rs <1
