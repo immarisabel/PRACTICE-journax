@@ -2,3 +2,101 @@ how to check if empty:
 	select count(*) from employee == 0 // NO!
 	select 1 from login limit 1
 		if rs <1
+		
+Journal set up:
+
+COVER	
+	- date and time
+	- count of entries
+	- select journal / category?
+	- count entries per category?
+	- weather display to learn to use the API
+	- export journal to learn how to export
+	
+	
+	Welcome to Journax!
+	
+	12/AUG/2021
+	
+	Location, NL
+	weather description | 20C / 68F
+	
+	Entries count: 15
+		Category One : 4 entries
+		Categories Two : 5 entries
+		Category Three : 6 entries
+		
+	Whats the password?
+		
+
+INDEX PAGE
+
+	[0] lock
+	
+	ENTRIES
+	[1] read 
+	[2] new
+	[3] update
+	[4] remove
+	[5] search
+	
+	OPTIONS
+	[6] diary log
+	[7] manage categories
+	[8] manage journal 
+	
+	
+ENTRY PAGE
+
+	Entry example blah blah blahblah blah blah
+	blah blah blah
+	blah blah blahblah blah blah
+	blah blah blahblah blah blah
+	
+	blah blah blahblah blah blahblah blah blah
+	blah blah blahblah blah blah
+	blah blah blahblah blah blah
+	
+	-------------------------------------------------
+	
+	[<] [ date ] | [ 1/15 ] | [ Category ] [>]	
+	
+	-------------------------------------------------
+	
+	type < or > to change page
+	[0] back to index		
+	
+	
+DAILY LOG
+
+	• 01/08/21 : This is my daily log
+	• 02/08/21 : This is my daily log
+	• 03/08/21 : This is my daily log
+	• 04/08/21 : This is my daily log
+	
+	-------------------------------------------------
+	
+	[1] add a log
+	
+	[0] back to index	
+	
+CATEGORIES		
+
+	[1 ] see all categories
+	[2] to add a new category
+	[3] to modify a category
+	[4] to remove a category
+	[5] read a category
+ 
+	[0] back to index	
+
+MANAGE JOURNAL
+
+	[1] delete journal
+	[2] change password
+	[3] export journal 
+	
+	
+
+	
+

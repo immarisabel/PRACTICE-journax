@@ -1,15 +1,13 @@
 package nl.marisabel.journal;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class NewJournal {
+	connect c = new connect();
 
     public void createJournal() throws ClassNotFoundException {
-        Class.forName("org.sqlite.JDBC");
-        Connection connection = null;
 
 
         String journalTable = "CREATE TABLE journal ("
@@ -25,14 +23,17 @@ public class NewJournal {
                 + "PRIMARY KEY(cat_id AUTOINCREMENT))";
 
         try {
-            // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
-            Statement statement = connection.createStatement();
+			Statement statement = c.c().createStatement();
             statement.setQueryTimeout(30);
             statement.executeUpdate(journalTable);
             statement.executeUpdate(categoriesTable);
             System.out.println("Tables Created");
-
+            
+            PreparedStatement prep = c.c().prepareStatement("INSERT INTO categories (category, cat_id) VALUES (?,?)");
+            prep.setString(1, "default");
+            prep.setInt(2, 1);
+            prep.execute();
+            
             System.out.println(">>>>>>>> journal created");
 
 
@@ -43,8 +44,8 @@ public class NewJournal {
             System.err.println(e.getMessage());
         } finally {
             try {
-                if (connection != null)
-                    connection.close();
+				if (c.c() != null)
+					c.c().close();
             } catch (SQLException e) {
                 // connection close failed.
                 System.err.println(e.getMessage());
@@ -53,17 +54,13 @@ public class NewJournal {
     }
 
     public void delJournal() throws ClassNotFoundException {
-        Class.forName("org.sqlite.JDBC");
-        Connection connection = null;
-
 
         String tables = "drop table if exists journal;" +
                 "drop table if exists categories;";
 
         try {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:journaxDB.db");
-            Statement statement = connection.createStatement();
+			Statement statement = c.c().createStatement();
             statement.setQueryTimeout(30);
             statement.executeUpdate(tables);
             System.out.println("Tables Dropped");
@@ -78,8 +75,8 @@ public class NewJournal {
             System.err.println(e.getMessage());
         } finally {
             try {
-                if (connection != null)
-                    connection.close();
+				if (c.c() != null)
+					c.c().close();
             } catch (SQLException e) {
                 // connection close failed.
                 System.err.println(e.getMessage());

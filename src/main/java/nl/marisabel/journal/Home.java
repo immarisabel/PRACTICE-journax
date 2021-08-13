@@ -7,6 +7,8 @@ public class Home {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
+		new FrontPage();
+
 		Login login = new Login();
 		login.getLogin();
 		Scanner scan = new Scanner(System.in);
