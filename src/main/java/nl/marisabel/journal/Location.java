@@ -1,66 +1,39 @@
 package nl.marisabel.journal;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.io.IOException;
+import java.util.Map;
 
-import io.ipgeolocation.api.Geolocation;
-import io.ipgeolocation.api.GeolocationParams;
-import io.ipgeolocation.api.IPGeolocationAPI;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 public class Location {
 
-	@SuppressWarnings("static-access")
-	public void ip() throws UnknownHostException {
-		
-		InetAddress inetAddress = InetAddress.getLocalHost();
-		System.out.println(inetAddress.getLocalHost());
-		// return String.valueOf(inetAddress);
+
+	@SuppressWarnings("rawtypes")
+	public String location() throws IOException, InterruptedException, JsonSyntaxException {
+//		HttpRequest request = HttpRequest.newBuilder()
+//				.uri(URI.create("https://ip-geo-location.p.rapidapi.com/ip/check?format=json"))
+//				.header("x-rapidapi-key", "e0c5062070msh5a3786f34a7a33bp1afa72jsn38607315c044")
+//				.header("x-rapidapi-host", "ip-geo-location.p.rapidapi.com")
+//				.method("GET", HttpRequest.BodyPublishers.noBody()).build();
+//		HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+//		// System.out.println(response.body());
+//
+//		String location = response.body();
+
+		String location = "{\"ip\":\"84.81.240.178\",\"type\":\"IPv4\",\"location\":{\"latitude\":51.9336,\"longitude\":4.4888},\"postcode\":\"3034\",\"area\":{\"code\":\"NL-ZH\",\"geonameid\":2743698,\"name\":\"South Holland\"},\"asn\":{\"number\":1136,\"organisation\":\"KPN B.V.\"},\"city\":{\"geonameid\":2747891,\"name\":\"Rotterdam\",\"population\":598199},\"continent\":{\"geonameid\":6255148,\"name\":\"Europe\",\"code\":\"EU\"},\"country\":{\"geonameid\":2750405,\"name\":\"Netherlands\",\"code\":\"NL\",\"capital\":\"Amsterdam\",\"area_size\":\"41526.00 sq. km\",\"population\":17231017,\"phone_code\":\"31\",\"is_in_eu\":true,\"languages\":{\"fy\":\"West Frisian language\",\"nl\":\"Flemish\"},\"flag\":{\"file\":\"https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Netherlands.svg\",\"emoji\":\"??\",\"unicode\":\"U+1F1F3 U+1F1F1\"}},\"currency\":{\"code\":\"EUR\",\"name\":\"Euro\"},\"security\":{\"is_tor\":false,\"is_proxy\":false,\"is_crawler\":false,\"is_thread\":false},\"time\":{\"timezone\":\"Europe/Amsterdam\",\"time\":\"2021-08-14 19:24:09 +0200\",\"gtm_offset\":7200},\"status\":\"success\"}";
+
+		Gson gson = new Gson();
+		// generates map from JSON string
+		Map lm = gson.fromJson(location, Map.class);
+		Map pm = gson.fromJson(lm.get("city").toString(), Map.class);
+		String name = pm.get("name").toString();
+		// Map am = gson.fromJson(lm.get("area").toString(), Map.class);
+		String locationName = (name);
+		return location;
 
 	}
-	
-	public Location() throws UnknownHostException {
-		IPGeolocationAPI api = new IPGeolocationAPI("fe81355e74fa4346bb0bbc90a0612f73");
 
-	
-	// Get geolocation for IP address (1.1.1.1) and fields (geo, time_zone and currency)
-	GeolocationParams geoParams = new GeolocationParams();
-	geoParams.setIPAddress("");
-	geoParams.setFields("geo,time_zone,currency");
-	Geolocation geolocation = api.getGeolocation(geoParams);
-//
-//	// Check if geolocation lookup was successful
-//	if(geolocation.getStatus() == 200) {
-//	    System.out.println(geolocation.getCountryName());
-//	    System.out.println(geolocation.getCurrency().getName());
-//	    System.out.println(geolocation.getTimezone().getCurrentTime());
-//	} else {
-//	    System.out.printf("Status Code: %d, Message: %s\n", geolocation.getStatus(), geolocation.getMessage());
-//	}
-//
-//	// Get geolocation in Russian** for IP address (1.1.1.1) and all fields
-//	GeolocationParams geoParams1 = new GeolocationParams();
-//	geoParams.setIPAddress("1.1.1.1");
-//	geoParams.setLang("ru");
-//
-//	Geolocation geolocation1 = api.getGeolocation(geoParams);
-//
-//	// Check if geolocation lookup was successful
-//	if(geolocation.getStatus() == 200) {
-//	    System.out.println(geolocation.getIPAddress());
-//	    System.out.println(geolocation.getCountryName());
-//	} else {
-//	    System.out.printf("Status Code: %d, Message: %s\n", geolocation.getStatus(), geolocation.getMessage());
-//	}
 
-	// Get geolocation for the calling machine's IP address for all fields
-//	Geolocation geolocation1 = api.getGeolocation();
-//
-//	if(geolocation.getStatus() == 200) {
-//	    System.out.println(geolocation.getCountryCode2());
-//	    System.out.println(geolocation.getTimezone().getCurrentTime());
-//	} else {
-//	    System.out.printf("Status Code: %d, Message: %s\n", geolocation.getStatus(), geolocation.getMessage());
-//	}
 
-	}
 }
