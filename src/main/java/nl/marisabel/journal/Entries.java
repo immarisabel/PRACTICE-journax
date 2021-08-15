@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import nl.marisabel.utils.Date;
+import nl.marisabel.utils.connect;
+
 public class Entries {
 
 	private static final Scanner scanner = new Scanner(System.in);
@@ -103,14 +106,14 @@ public class Entries {
 	}
 
 	public void deleteEntry() throws ClassNotFoundException, SQLException {
-		
+
 		System.out.println("Type the entry number you wish to delete...");
 		entryId = scanner.nextInt();
 		getEntry(entryId);
 		System.out.println("Do you wish to delete it? Type 1. yes or 2. no");
 		int answer = scanner.nextInt();
 		if (answer == 1) {
-		
+
 		PreparedStatement prep = c.c().prepareStatement("DELETE FROM journal WHERE entry_id = ?");
 		prep.setInt(1, entryId);
 		prep.execute();
@@ -120,11 +123,11 @@ public class Entries {
 		}
 
 	}
-	
+
     public void searchEntries( ) throws ClassNotFoundException, SQLException {
     	System.out.println("Search for a word...");
 		String searchWord = scanner.nextLine();
-    	
+
         Statement statement = c.c().createStatement();
         statement.setQueryTimeout(30);
 
@@ -144,5 +147,5 @@ public class Entries {
         c.c().close();
 
     }
-    
+
 }

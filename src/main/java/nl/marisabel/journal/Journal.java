@@ -3,6 +3,8 @@ package nl.marisabel.journal;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import nl.marisabel.utils.Input;
+
 public class Journal {
 
 	private static Scanner scanner = new Scanner(System.in);

@@ -1,7 +1,12 @@
 package nl.marisabel.journal;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
+
+import nl.marisabel.utils.connect;
 
 public class Categories {
 

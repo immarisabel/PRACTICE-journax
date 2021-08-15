@@ -1,12 +1,15 @@
 package nl.marisabel.journal;
 
-import java.net.UnknownHostException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Home {
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException, UnknownHostException {
+	public static void main(String[] args)
+			throws ClassNotFoundException, SQLException, InterruptedException, IOException {
+
+
 
 		new FrontPage();
 

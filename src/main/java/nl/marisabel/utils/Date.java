@@ -1,4 +1,4 @@
-package nl.marisabel.journal;
+package nl.marisabel.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

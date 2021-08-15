@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import nl.marisabel.utils.connect;
+
 public class NewJournal {
 	connect c = new connect();
 
@@ -28,12 +30,12 @@ public class NewJournal {
             statement.executeUpdate(journalTable);
             statement.executeUpdate(categoriesTable);
             System.out.println("Tables Created");
-            
+
             PreparedStatement prep = c.c().prepareStatement("INSERT INTO categories (category, cat_id) VALUES (?,?)");
             prep.setString(1, "default");
             prep.setInt(2, 1);
             prep.execute();
-            
+
             System.out.println(">>>>>>>> journal created");
 
 

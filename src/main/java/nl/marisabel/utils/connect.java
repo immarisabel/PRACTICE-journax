@@ -1,11 +1,11 @@
-package nl.marisabel.journal;
+package nl.marisabel.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class connect {
-		
+
 
 	public Connection c() throws ClassNotFoundException, SQLException {
 

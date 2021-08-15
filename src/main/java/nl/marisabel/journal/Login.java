@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import nl.marisabel.utils.connect;
+
 public class Login {
 
 	String pw = "";
@@ -28,7 +30,7 @@ public class Login {
 		prep.setString(2, reminder);
 		prep.execute();
 		c.c().close();
-		
+
 		getLogin();
 	}
 
@@ -37,24 +39,24 @@ public class Login {
 		Statement stmt = c.c().createStatement();
 		String query = "SELECT * FROM login";
 		ResultSet rs = stmt.executeQuery(query);
-		
+
 		while (rs.next()) {
-			
+
 			this.pw = rs.getString("password");
 			this.reminder = rs.getString("reminder");
 		}
-		
+
 		c.c().close();
-		
-		
+
+
 	}
-	
+
 	public int getCountLogin() throws SQLException, ClassNotFoundException {
 		Statement stmt = c.c().createStatement();
 		String query = "select 1 from login limit 1";
 		ResultSet rs = stmt.executeQuery(query);
-		
-		
+
+
 		int rowCount = 0;
 		while(rs.next()) {
 		    // Increment rowCount by 1
@@ -62,9 +64,9 @@ public class Login {
 
 		    // Process the result set data for the current row
 		}
-		
-		
-		
+
+
+
 		return rowCount;
 	}
 
