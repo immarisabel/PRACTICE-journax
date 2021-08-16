@@ -3,7 +3,6 @@ package nl.marisabel.journal;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import com.google.gson.Gson;
 
@@ -22,9 +21,8 @@ public class FrontPage {
 	String lastEntryDate = "date will go here";
 
 	public void countEntries() throws ClassNotFoundException, SQLException {
-		Statement stmt = c.c().createStatement();
 		String query = "select * from journal";
-		ResultSet rs = stmt.executeQuery(query);
+		ResultSet rs = c.s().executeQuery(query);
 		int eCount = 0;
 		while (rs.next()) {
 			eCount++;
@@ -54,7 +52,7 @@ public class FrontPage {
 		Location location = new Gson().fromJson(json, Location.class);
 		String city = location.getCity().getName();
 		String country = location.getCountry().getName();
-
+// TODO move this to own class returning country and city so I can use it on weather app as well
 		// count entries total
 		countEntries();
 		// String location = l.getCity().getName().toString();
