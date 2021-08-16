@@ -9,6 +9,5 @@ public class Date {
 
         LocalDateTime dateTime = LocalDateTime.now();
         return dateTime.format(DateTimeFormatter.ofPattern("d MMM uuuu @ HH:mm"));
-
     }
 }

@@ -1,27 +1,25 @@
 package nl.marisabel.journal;
 
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import nl.marisabel.utils.Input;
 
 public class Journal {
 
-	private static Scanner scanner = new Scanner(System.in);
-
 	public Journal() throws ClassNotFoundException, SQLException {
-
+		// Load journal objects
 		Entries entry = new Entries();
-		NewJournal newJournal = new NewJournal();
+		ManageJournal newJournal = new ManageJournal();
 		Categories cats = new Categories();
+
+		// Open journal
 		System.out.println();
 		System.out.println("Journal is open.\n===================");
-		printActions();
+		options();
 		boolean quit = false;
-
+// TODO update menu to add password update journal options
 		while (!quit) {
 			int action = Input.getInt();
-
 			switch (action) {
 			case 0 -> {
 				System.out.println("\nLocking...");
@@ -36,7 +34,7 @@ public class Journal {
 				cats.catOptions();
 			}
 			case 6 -> entry.searchEntries();
-			case 7 -> printActions();
+			case 7 -> options();
 			case 8 -> newJournal.createJournal();
 			case 9 -> newJournal.delJournal();
 
@@ -45,7 +43,7 @@ public class Journal {
 
 	}
 
-	private static void printActions() {
+	private static void options() {
 		System.out.println("OPTIONS:\n");
 		System.out.println("[0] lock\n");
 		System.out.println("[1] read journal \n" + "[2] new entry\n" + "[3] update entry\n" + "[4] remove entry\n"

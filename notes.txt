@@ -36,9 +36,9 @@ INDEX PAGE
 	ENTRIES
 	[1] read 
 	[2] new
-	[3] update
+	[3] update <- need to fix this
 	[4] remove
-	[5] search
+	[5] search <- to add : result not found
 	
 	OPTIONS
 	[6] diary log
