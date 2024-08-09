@@ -13,7 +13,7 @@ public class Weather {
 	public String weather() throws IOException, InterruptedException {
 		Location location = new Location();
 		String uriString1 = "https://api.weatherapi.com/v1/current.json?key=";
-		String key = "e0477b84612f4249b0c133415211608";
+		String key = "be748179f5e64efc88b173720231111";
 		String uriString2 = "&q=";
 		String loc = "Rotterdam"; // to replace with API call for location
 		// String loc = location.getCity().getName();
@@ -23,7 +23,6 @@ public class Weather {
 				.method("GET", HttpRequest.BodyPublishers.noBody()).build();
 		HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-		String weather = response.body();
-		return weather;
+  return response.body();
 	}
 }

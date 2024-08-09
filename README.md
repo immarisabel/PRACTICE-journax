@@ -80,5 +80,6 @@ tried to implement LOGIN/LOCK journal methods
 - [x] then cancel if chosen
 	
 - [ ] Create a choice to randomly chose an entry according to random ID generation.
+- [ ] Add encryption and decryption
 
 	

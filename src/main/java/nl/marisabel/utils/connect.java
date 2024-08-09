@@ -16,8 +16,8 @@ public class connect {
 	}
 
 	public Statement s() throws ClassNotFoundException, SQLException {
-		Statement statement = c().createStatement();
-		return statement;
+
+  return c().createStatement();
 
 	}
 

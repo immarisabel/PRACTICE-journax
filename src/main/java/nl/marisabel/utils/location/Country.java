@@ -14,7 +14,7 @@ public class Country {
     @Expose
     private String name;
 
-	@SerializedName("code")
+    @SerializedName("code")
     @Expose
     private String code;
 
@@ -51,7 +51,6 @@ public class Country {
         sb.append(((this.code == null)?"<null>":this.code));
         sb.append(',');
 
-	
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
